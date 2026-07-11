@@ -46,15 +46,14 @@ Aktualizováno: 11. 7. 2026
 
 ## P1 — SEO
 
-- [ ] Doplnit kanonickou adresu `https://wenzlovakristyna.cz/`.
-- [ ] Doplnit Open Graph a Twitter Card metadata pro sdílení.
-- [ ] Připravit samostatný obrázek pro sdílení alespoň 1200 × 630 px.
+- [x] Doplnit kanonickou adresu `https://wenzlovakristyna.cz/`.
+- [x] Doplnit Open Graph a Twitter Card metadata pro sdílení.
+- [ ] Připravit samostatný obrázek pro sdílení alespoň 1200 × 630 px. Dočasně je použit úvodní půdorys.
 - [ ] Přidat favicon a ikonu pro Apple zařízení.
-- [ ] Přidat `robots.txt` a jednoduchý `sitemap.xml`.
+- [x] Přidat `robots.txt` a jednoduchý `sitemap.xml`.
 - [ ] Registrovat produkční web v Google Search Console a Bing Webmaster Tools.
-- [ ] Přidat JSON-LD. Preferovaný typ bude vybrán podle skutečných údajů:
-  - `Person` pro osobní portfolio,
-  - `ProfessionalService` nebo vhodný podtyp `LocalBusiness`, pokud existuje veřejné sídlo a místní služby.
+- [x] Přidat základní JSON-LD typu `Person` s veřejně ověřenými údaji.
+- [ ] Rozšířit strukturovaná data na `ProfessionalService` nebo vhodný podtyp `LocalBusiness`, pokud budou k dispozici veřejné údaje o sídle a místních službách.
 - [ ] Přidat do strukturovaných dat pouze ověřitelné údaje: jméno, URL, e-mail, oblast působnosti, Instagram, případně IČO, telefon a adresa.
 - [ ] Zvážit samostatné URL pro jednotlivé projekty. Jedna dlouhá stránka omezuje možnost cílit vyhledávání na konkrétní realizace.
 - [ ] Rozšířit texty o přirozené a konkrétní formulace, například „návrh interiéru bytu“, „interiérový design komerčních prostor“ a lokalitu. Nepřidávat mechanické seznamy klíčových slov.
@@ -63,16 +62,41 @@ Aktualizováno: 11. 7. 2026
 
 - [ ] Zachovat důležité informace jako viditelný text v HTML, ne pouze v obrázcích.
 - [ ] Používat konkrétní názvy, lokality, typy prostorů, roky a rozsah práce.
-- [ ] Zajistit, aby `robots.txt` neblokoval `OAI-SearchBot` ani běžné vyhledávací roboty.
+- [x] Zajistit, aby `robots.txt` neblokoval `OAI-SearchBot` ani běžné vyhledávací roboty.
 - [ ] Udržovat konzistentní identitu mezi webem, Instagramem, případným Google Business Profile a dalšími veřejnými profily.
 - [ ] Vytvářet samostatné, odkazovatelné stránky projektů s jasným názvem a stručným souhrnem.
 - [ ] Přidat strukturovaná data JSON-LD; pomáhají strojům rozlišit osobu, službu a projekt.
-- [ ] Volitelně přidat `/llms.txt` až po dokončení obsahu. Jde zatím o komunitní návrh, nikoli zavedený standard ani záruku citování.
+- [x] Přidat základní `/llms.txt`. Jde zatím o komunitní návrh, nikoli zavedený standard ani záruku citování.
 - [ ] Neprodukovat skryté „AI texty“, duplicitní stránky ani obsah napsaný pouze pro roboty.
 
 ## P1 — anonymní statistika návštěvnosti
 
-### Doporučená varianta: Plausible Analytics
+### Bezplatný základ: Google Search Console
+
+- Bezplatná služba od Googlu bez měřicího skriptu na webu.
+- Ukazuje zobrazení ve vyhledávání, kliknutí, CTR, vyhledávací dotazy a stav indexace.
+- Neměří přímé návštěvy, návštěvy z Instagramu ani celkový počet návštěvníků.
+
+Postup:
+
+- [ ] Založit vlastnictví domény `wenzlovakristyna.cz` v Google Search Console.
+- [ ] Ověřit vlastnictví přes DNS záznam; tato varianta nevyžaduje úpravu kódu webu.
+- [ ] Odeslat `https://wenzlovakristyna.cz/sitemap.xml`.
+- [ ] Jednou měsíčně projít report Výkon a Indexování.
+
+### Bezplatná statistika všech návštěv: Cloudflare Web Analytics
+
+- Bezplatná, privacy-first analytika bez marketingových cookies.
+- Pro GitHub Pages je nutné vytvořit účet, přidat doménu a vložit jedinečný JavaScriptový beacon.
+- Měří návštěvy, stránky, zdroje návštěvnosti a základní výkonové metriky.
+
+Postup:
+
+- [ ] Založit Cloudflare účet a přidat `wenzlovakristyna.cz` do Web Analytics.
+- [ ] Předat jedinečný měřicí snippet pro vložení do webu.
+- [ ] Vložit snippet pouze do produkční verze a ověřit první data.
+
+### Placená alternativa: Plausible Analytics
 
 - Bez cookies a persistentních identifikátorů.
 - Agregovaná statistika návštěv, zdrojů, zařízení, zemí a nejnavštěvovanějších stránek.
@@ -88,11 +112,11 @@ Postup:
 - [ ] Neodesílat do názvů událostí osobní údaje ani obsah formulářů.
 - [ ] Po nasazení ověřit, že služba nevytváří cookies ani lokální úložiště.
 
-### Bezplatná alternativa: Cloudflare Web Analytics
+### Nedoporučená varianta bez lišty: Google Analytics
 
-- Bezplatná a podle dokumentace Cloudflare bez sběru či použití osobních dat návštěvníků.
-- Lze vložit do GitHub Pages pomocí JavaScriptového beaconu bez přesunu DNS ke Cloudflare.
-- Před nasazením ověřit aktuální podmínky, zpracovatele, umístění dat a požadavky českého/EU práva.
+- Google Analytics je zdarma a nabízí detailní statistiky všech návštěv.
+- Pro návštěvníky z EHP vyžaduje správně nastavený souhlas; Google Consent Mode je navržen pro spolupráci s cookie bannerem.
+- Pro tento web jej proto nenasazovat, pokud cílem zůstává měření bez cookie lišty.
 
 Poznámka: absence cookies sama o sobě automaticky neřeší všechny informační povinnosti. I při anonymní analytice je vhodná krátká a srozumitelná stránka o soukromí. Toto není právní posouzení.
 
@@ -133,8 +157,8 @@ Poznámka: absence cookies sama o sobě automaticky neřeší všechny informač
 1. Získat chybějící obsahové podklady.
 2. Dokončit sekce služby a průběh spolupráce.
 3. Optimalizovat obrázky a změřit výkon.
-4. Doplnit produkční SEO metadata, JSON-LD, favicon, `robots.txt` a `sitemap.xml`.
-5. Nasadit Plausible nebo Cloudflare Web Analytics.
+4. Připravit favicon, finální obrázek pro sdílení a ověřit JSON-LD v Rich Results Testu.
+5. Založit Google Search Console a nasadit Cloudflare Web Analytics po předání měřicího snippetu.
 6. Provést finální kontrolu, sloučit přes pull request a ověřit produkční doménu.
 
 ## Referenční dokumentace
